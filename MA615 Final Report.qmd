@@ -2,6 +2,7 @@
 title: "Tasmania Climate Analysis"
 format: html
 editor: visual
+output: pdf_document
 ---
 
 # Introduction
@@ -12,7 +13,7 @@ This analysis aims to systematically explore the main climatic features of Tasma
 
 # Data：
 
-## Data Source 
+## Data Source
 
 Bureau of Meteorology (BOM), Australia
 
@@ -29,7 +30,7 @@ Type: Government official meteorological data
 
 **Note:** This data represents long-term averages.
 
-## Season Classification: 
+## Season Classification:
 
 Seasons are defined based on the Southern Hemisphere calendar, as Tasmania is located south of the equator. Accordingly:
 
