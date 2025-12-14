@@ -14,20 +14,25 @@ month = factor(c('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
   
 month_num = 1:12,
   
-# Average maximum temperature (degrees Celsius)
+# Average maximum temperature (degrees Celsius):
+
 max_temp = c(21.8, 21.8, 20.3, 17.4, 14.6, 12.1, 11.8, 13.2, 15.2, 17.0, 18.8, 20.4),
   
-# Average minimum temperature (degrees Celsius)
+# Average minimum temperature (degrees Celsius):
+
 min_temp = c(12.1, 12.1, 11.0, 9.0, 7.0, 5.2, 4.6, 5.3, 6.5, 7.8, 9.4, 10.9),
   
-# Average rainfall (millimeters)
+# Average rainfall (millimeters):
+
 rainfall = c(46.5, 38.8, 44.1, 49.4, 47.4, 53.6, 51.9, 54.0, 53.0, 62.0, 54.0, 56.7),
   
-# Average daily sunshine (hours per day)
+# Average daily sunshine (hours per day):
+
 sunshine = c(8.0, 7.3, 6.4, 5.3, 4.2, 3.9, 4.4, 5.0, 5.9, 6.5, 6.9, 7.4)
 )
 
-#season session
+#season session:
+
 climate_data <- climate_data %>%
   mutate(season = case_when(
     month_num %in% c(12, 1, 2) ~ "Summer",   # Dec, Jan, Feb
@@ -85,7 +90,8 @@ ui <- navbarPage(
     
     hr(),
     
-# Climate overview chart
+# Climate overview chart:
+
     fluidRow(
       column(12,
         h3("Temperature and Rainfall Overview"),
@@ -189,7 +195,7 @@ ui <- navbarPage(
 
 server <- function(input, output, session) {
   
-#Interactive map
+#Interactive map:
   
 output$location_map <- renderLeaflet({
     leaflet() %>%
@@ -249,7 +255,7 @@ output$overview_plot <- renderPlotly({
     ggplotly(p)
   })
   
-#seasonal temperature:
+#Seasonal temperature:
   
   output$seasonal_temp_plot <- renderPlotly({
     seasonal_data <- climate_data %>%

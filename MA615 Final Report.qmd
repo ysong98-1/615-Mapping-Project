@@ -12,7 +12,7 @@ This analysis aims to systematically explore the main climatic features of Tasma
 
 # Data：
 
-## Data Source
+## Data Source 
 
 Bureau of Meteorology (BOM), Australia
 
@@ -27,7 +27,21 @@ Type: Government official meteorological data
 -   **Variables:** Temperature, rainfall, sunshine hours
 -   **Missing Values :** No missing values (because the data is monthly averages)
 
-**PS:** This data represents long-term averages.
+**Note:** This data represents long-term averages.
+
+## Season Classification: 
+
+Seasons are defined based on the Southern Hemisphere calendar, as Tasmania is located south of the equator. Accordingly:
+
+-   Summer: December to February (warmest period)
+
+-   Autumn: March to May
+
+-   Winter: June to August (coolest period)
+
+-   Spring: September to November
+
+**Note:** These seasonal definitions are reversed relative to those in the Northern Hemisphere.
 
 ```{r}
 library(shiny)      
@@ -110,6 +124,8 @@ leaflet() %>%
   )
 ```
 
+**Street Map:** Presents the weather station location using a detailed street basemap. Users may click on the marker to view station-specific information, including geographic coordinates, elevation, and station identification number.
+
 ## Map 2:
 
 ```{r}
@@ -122,6 +138,8 @@ leaflet() %>%
     popup = "Hobart Weather Station"
   )
 ```
+
+**Satellite Map:** Displays high-resolution aerial imagery of the Hobart region, providing geographic and environmental context for the weather station location.
 
 # Climate Analysis
 
@@ -251,7 +269,7 @@ The bar chart shows the average monthly rainfall in Hobart, Tasmania, highlighti
 
 Rainfall is slightly higher during the winter and spring months, particularly from July to October, with August generally being the wettest month, averaging between 50–60 mm. In contrast, the summer months of January and February tend to be the driest.
 
-**PS: Different colors in this bar chart represent different seasons. (Summer: Orange, Autumn: Dark Red, Winter: Light Blue, Spring: Green)**
+**Note: Different colors in this bar chart represent different seasons. (Summer: Orange, Autumn: Dark Red, Winter: Light Blue, Spring: Green)**
 
 ### Seasonal Rainfall Comparison
 
