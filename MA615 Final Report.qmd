@@ -315,7 +315,7 @@ ggplot(climate_data, aes(x = month, y = sunshine, group = 1)) +
 
 The chart shows the average daily sunshine hours in Hobart, Tasmania throughout the year, exhibiting typical Southern Hemisphere seasonal variations. Sunshine hours are highest during the summer months (December to February), averaging approximately 8 to 8.5 hours in January, reflecting the longer daylight hours and more direct sunlight during the Southern Hemisphere summer solstice. As autumn (March to May) arrives, sunshine gradually decreases, reaching its lowest point in winter (June to July), with only about 4 to 4.5 hours of sunshine in June, corresponding to the shortest days of the year. Overall, the sunshine variation shows a stable annual cycle, primarily influenced by the changes in day length due to latitude, while local weather and cloud cover also have some impact on the actual sunshine duration.
 
-# Conclusions：
+# Conclusion:
 
 Tasmania has a temperate oceanic climate, characterized by moderate temperatures, consistent year-round rainfall, and clear seasonal patterns in sunshine. Summers are mild and sunny, with temperatures ranging from 20 to 22°C and long daylight hours, while winters are cool but not severely cold, with limited sunshine. Rainfall is evenly distributed throughout the year, and there are no extreme weather events, making Tasmania accessible year-round. Overall, the climate is stable and pleasant, with the ocean playing a key role in moderating temperatures.
 

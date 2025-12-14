@@ -7,13 +7,11 @@ library(leaflet)
 
 
 climate_data <- data.frame(
-# Month names
 month = factor(c('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'),
                  levels = c('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
                            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')),
   
-# Month from 1 to 12
 month_num = 1:12,
   
 # Average maximum temperature (degrees Celsius)
@@ -29,7 +27,7 @@ rainfall = c(46.5, 38.8, 44.1, 49.4, 47.4, 53.6, 51.9, 54.0, 53.0, 62.0, 54.0, 5
 sunshine = c(8.0, 7.3, 6.4, 5.3, 4.2, 3.9, 4.4, 5.0, 5.9, 6.5, 6.9, 7.4)
 )
 
-# Add season for each month
+#season session
 climate_data <- climate_data %>%
   mutate(season = case_when(
     month_num %in% c(12, 1, 2) ~ "Summer",   # Dec, Jan, Feb
@@ -38,16 +36,11 @@ climate_data <- climate_data %>%
     month_num %in% c(9, 10, 11) ~ "Spring"   # Sep, Oct, Nov
   ))
 
-# ==============================================================================
-# USER INTERFACE (UI)
-# ==============================================================================
 
 ui <- navbarPage(
   title = "Tasmania Climate Dashboard",
   
-  # ============================================================================
-  # TAB 1: OVERVIEW
-  # ============================================================================
+#Overview tab:
   
   tabPanel("Overview",
     h2("Tasmania Climate Overview"),
@@ -55,7 +48,6 @@ ui <- navbarPage(
     hr(),
     
     fluidRow(
-      # Left side - Interactive Map
       column(6,
         h3("Location Map"),
         p("Interactive map showing the weather station location in Hobart, Tasmania."),
@@ -63,8 +55,6 @@ ui <- navbarPage(
         br(),
         p(em("You can zoom in/out and click on the marker for more information."))
       ),
-      
-      # Right side - Location Information
       column(6,
         h3("Location Information"),
         p(strong("City:"), "Hobart"),
@@ -95,7 +85,7 @@ ui <- navbarPage(
     
     hr(),
     
-    # Climate overview chart
+# Climate overview chart
     fluidRow(
       column(12,
         h3("Temperature and Rainfall Overview"),
@@ -104,8 +94,7 @@ ui <- navbarPage(
     ),
     
     br(),
-    
-    # Best time to visit
+
     fluidRow(
       column(12,
         h4("Best Time to Visit: December - February (Summer)"),
@@ -115,14 +104,13 @@ ui <- navbarPage(
     )
   ),
   
-##Tempeature:
+#Tempeature:
   
   tabPanel("Temperature",
     h2("Temperature Analysis"),
     hr(),
     
     fluidRow(
-      # Left side - Statistics
       column(4,
         h3("Temperature Statistics"),
         p(strong("Warmest Month:"), "January/February (21.8°C)"),
@@ -144,7 +132,6 @@ ui <- navbarPage(
         p("Temperatures are comfortable throughout the year with no extreme heat or cold.")
       ),
       
-      # Right side - Charts
       column(8,
         h3("Monthly Temperature Pattern"),
         plotlyOutput("temp_plot", height = "350px"),
@@ -156,7 +143,8 @@ ui <- navbarPage(
     )
   ),
   
-#Rainfall and sunshine  
+#Rainfall and sunshine:
+
   tabPanel("Rainfall & Sunshine",
     h2("Rainfall and Sunshine Analysis"),
     hr(),
@@ -203,7 +191,7 @@ server <- function(input, output, session) {
   
 #Interactive map
   
-  output$location_map <- renderLeaflet({
+output$location_map <- renderLeaflet({
     leaflet() %>%
       addTiles() %>%
       setView(lng = 147.33, lat = -42.89, zoom = 10) %>%
@@ -226,10 +214,10 @@ server <- function(input, output, session) {
         popup = "Weather Station Location"
       )
   })
-  
+
 #Overview:
 
-  output$overview_plot <- renderPlotly({
+output$overview_plot <- renderPlotly({
     p <- ggplot(climate_data, aes(x = month)) +
       geom_line(aes(y = max_temp, group = 1, color = "Max Temperature"), size = 1) +
       geom_point(aes(y = max_temp, color = "Max Temperature"), size = 2) +
